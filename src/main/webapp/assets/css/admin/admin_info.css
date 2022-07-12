@@ -1,0 +1,17 @@
+.admin_table {
+    width: 100%;
+    text-align: center;
+    border-top: 1px solid #333;
+}
+
+.admin_table tr {
+    border-bottom: 1px solid #333;
+}
+
+.admin_table tbody tr:hover {
+    background-color: #999;
+}
+
+.admin_table tr td {
+    padding: 10px;
+}

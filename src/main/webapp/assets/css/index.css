@@ -1,0 +1,41 @@
+.login_section {
+    width: 300px;
+    height: 300px;
+    border: 1px solid rgba(0,0,0,0.1);
+    text-align: center;
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+    padding: 20px;
+    box-shadow: 5px 5px 5px #777;
+}
+
+.login_section h2 {
+    font-size: 32px;
+    font-weight: 700;
+    color: #333;
+    margin-bottom: 40px;
+}
+
+.login_section div {
+    border: 1px solid #999;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+.login_section input {
+    border: none;
+    /* border-bottom: 1px solid #333; */
+    font-size: 17px;
+    padding: 20px 10px;
+    width: 95%;
+    background-color: rgba(0,0,0,0);
+}
+
+input:focus {outline:none;}
+
+.login_section button {
+    width: 100%;
+    font-size: 17px;
+}

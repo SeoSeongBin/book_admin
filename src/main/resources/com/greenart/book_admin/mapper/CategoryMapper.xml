@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.greenart.book_admin.mapper.CategoryMapper">
+    <insert id="insertCategory">
+        INSERT INTO category_info
+        (ci_name)
+        VALUES(#{name});
+    </insert>
+    <select id="getCategoryList" resultType="com.greenart.book_admin.data.CategoryInfoVO">
+        select *, (select count(*) from book_info where bi_ci_seq = ci_seq) as ci_count
+        from
+            category_info
+            <if test="offset != null">
+                limit 10 offset #{offset}
+            </if>
+    </select>
+    <select id="getCatePageCount" resultType="java.lang.Integer">
+        select ceil(count(*)/10) from category_info;
+    </select>
+    <delete id="deletCategory">
+        DELETE FROM category_info
+        WHERE ci_seq=#{seq};
+    </delete>
+    <select id="getCategoryBySeq" resultType="com.greenart.book_admin.data.CategoryInfoVO">
+        select * from category_info where ci_seq = #{seq}
+    </select>
+    <update id="updateCategory">
+        UPDATE category_info
+        SET ci_name=#{name}
+        WHERE ci_seq=#{seq};
+    </update>
+</mapper>

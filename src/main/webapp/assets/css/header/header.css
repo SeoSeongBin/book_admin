@@ -1,0 +1,59 @@
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    border-right: 1px solid #333;
+    width: 180px;
+}
+
+header .admin_info {
+    text-align: center;
+    border-bottom: 1px solid #333;
+    padding: 9.5px;
+}
+
+header .admin_info .damin_profile {
+    width: 120px;
+    height: 120px;
+    background-color: #333;
+    border-radius: 50%;
+    margin: 0 auto;
+    margin-bottom: 10px;
+}
+
+nav {
+    padding: 9.5px;
+}
+
+nav ul li {
+    text-align: center;
+    padding: 10px 0;
+    margin-bottom: 10px;
+    border: 1px solid #999;
+}
+
+nav ul a {
+    text-decoration: none;
+    color: inherit;
+    font-size: 16px;
+    font-weight: 500;
+}
+
+nav ul a.on {
+    color: #fff;
+}
+
+nav ul a.on li {
+    background-color: #333;
+    border: 1px solid #333;
+}
+
+nav ul a:hover {
+    color: #fff;
+}
+
+nav ul a:hover li {
+    background-color: #333;
+    border: 1px solid #333;
+}

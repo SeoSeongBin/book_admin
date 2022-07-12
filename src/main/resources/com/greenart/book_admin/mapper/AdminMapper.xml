@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.greenart.book_admin.mapper.AdminMapper">
+    <select id="getAdminList" resultType="com.greenart.book_admin.data.AdminInfoVO">
+        SELECT ai_seq, ai_id, ai_pwd, ai_status, ai_profile_file, ai_name, ai_reg_dt
+        FROM admin_info
+        where ai_id like '%${keyword}%'
+        limit 10 offset #{offset}
+    </select>
+    <select id="getAdminAccount" resultType="java.lang.Integer">
+        select count(*) from admin_info;
+    </select>
+
+    <insert id="insertAdmin">
+        INSERT INTO admin_info
+        (ai_id, ai_pwd, ai_name)
+        VALUES(#{ai_id}, #{ai_pwd}, #{ai_name});
+    </insert>
+
+    <select id="loginAdmin" resultType="com.greenart.book_admin.data.AdminInfoVO">
+        SELECT ai_seq, ai_id, ai_pwd, ai_status, ai_profile_file, ai_name, ai_reg_dt
+        FROM admin_info
+        where ai_id=#{ai_id} and ai_pwd = #{ai_pwd}
+    </select>
+
+    <delete id="deleteAdmin">
+        DELETE FROM admin_info
+        WHERE ai_seq=#{seq};
+    </delete>
+</mapper>

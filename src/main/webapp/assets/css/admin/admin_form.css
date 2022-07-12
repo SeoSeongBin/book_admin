@@ -1,0 +1,32 @@
+.add_admin_form {
+    margin: 0 auto;
+    width: 70%;
+    margin-top: 100px;
+}
+
+.add_admin_form div {
+    padding: 10px;
+}
+
+.add_admin_form div h3 {
+    display: inline-block;
+    width: 100px;
+    font-size: 16px;
+    font-weight: 500;
+    color: #333;
+}
+
+.add_admin_form div input {
+    width: 30%;
+    height: 20px;
+    padding: 5px 5px;
+}
+
+.add_admin_form div.admin_file input {
+    /* padding: 3px; */
+}
+
+.btn_area {
+    width: 70%;
+    text-align: center;
+}
