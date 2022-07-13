@@ -1,0 +1,68 @@
+table {width: 100%; border-top: 1px solid #333;}
+table tr {
+    border-bottom: 1px solid #333;
+}
+table tr td {
+    padding: 20px;
+    text-align: center;
+}
+
+table tbody tr:hover {
+    background-color: #999;
+}
+
+.mod_popup {
+    position: fixed;
+    top: 0;left: 0;
+    width: 100vw;
+    height: 100vw;
+    background-color: rgba(0,0,0,0.5);
+    display: none;
+}
+
+.mod_popup_box {
+    background-color: #fff;
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+    padding: 20px;
+}
+
+.mod_popup_box h2 {
+    font-size: 24px;
+    font-weight: 600;
+    margin-bottom: 70px;
+    text-align: center;
+}
+
+.mod_popup_box div {
+    margin-bottom: 20px;
+}
+
+.mod_popup_box div p {
+    display: inline-block;
+    font-size: 17px;
+    width: 100px;
+    font-weight: 500;
+    color: #333;
+}
+
+.mod_popup_box div input:focus{outline: none;}
+
+.mod_popup_box div input {
+    width: 500px;
+    padding: 10px;
+    border: none;
+    border-bottom: 1px solid #000;
+    font-size: 17px;
+}
+
+.mod_popup_box div.gen input {
+    width: auto;
+}
+
+.mod_popup_box div select {
+    border: none;
+    border-bottom: 1px solid #333;
+}

@@ -15,4 +15,8 @@ public class BookInfoVO {
     private Date bi_publication_dt;
     private Integer bi_status;
     private Date bi_reg_dt;
+
+    private String bi_img;
+    private String ci_name;
+    private String si_summary;
 }

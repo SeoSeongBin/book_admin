@@ -28,4 +28,16 @@
         DELETE FROM admin_info
         WHERE ai_seq=#{seq};
     </delete>
+
+    <select id="selectAdminBySeq" resultType="com.greenart.book_admin.data.AdminInfoVO">
+        select ai_seq, ai_id, ai_pwd, ai_name
+        from admin_info
+        where ai_seq=#{seq}
+    </select>
+
+    <update id="updateAdmin">
+        UPDATE admin_info
+        SET ai_pwd=#{ai_pwd}, ai_name=#{ai_name}
+        WHERE ai_seq=#{ai_seq};
+    </update>
 </mapper>

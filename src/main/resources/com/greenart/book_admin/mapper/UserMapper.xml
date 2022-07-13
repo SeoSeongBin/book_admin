@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.greenart.book_admin.mapper.UserMapper">
+    <select id="getUserList" resultType="com.greenart.book_admin.data.UserInfoVO">
+        SELECT ui_seq, ui_id, ui_pwd, ui_name, ui_nickname, ui_bir_dt, ui_gen, ui_reg_dt, ui_status
+        FROM user_info
+        where ui_id like '%${keyword}%'
+        limit 10 offset #{offset}
+    </select>
+    <select id="getUserCnt" resultType="java.lang.Integer">
+        select ceil(count(*) / 10) from user_info where ui_id like '%${keyword}%'
+    </select>
+    <select id="getUserBySeq" resultType="com.greenart.book_admin.data.UserInfoVO">
+        SELECT ui_seq, ui_id, ui_pwd, ui_name, ui_nickname, ui_bir_dt, ui_gen, ui_status
+        FROM user_info
+        where ui_seq = #{seq}
+    </select>
+    <update id="updateUser">
+        UPDATE user_info
+        SET ui_id=#{ui_id}, ui_pwd=#{ui_pwd}, ui_name=#{ui_name}, ui_nickname=#{ui_nickname}, ui_bir_dt=#{ui_bir_str}, ui_gen=#{ui_gen}, ui_status=#{ui_status}
+        WHERE ui_seq=#{ui_seq};
+    </update>
+    <delete id="deleteUser">
+        DELETE FROM user_info
+        WHERE ui_seq=#{seq};
+    </delete>
+</mapper>

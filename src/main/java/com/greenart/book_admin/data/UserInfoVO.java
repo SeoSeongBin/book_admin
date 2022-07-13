@@ -12,6 +12,7 @@ public class UserInfoVO {
     private String ui_name;
     private String ui_nickname;
     private Date ui_bir_dt;
+    private String ui_bir_str;
     private Integer ui_gen;
     private Date ui_reg_dt;
     private Integer ui_status;

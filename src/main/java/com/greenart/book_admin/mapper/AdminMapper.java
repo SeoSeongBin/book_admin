@@ -13,4 +13,6 @@ public interface AdminMapper {
     public void insertAdmin(AdminInfoVO data);
     public AdminInfoVO loginAdmin(AdminInfoVO data);
     public void deleteAdmin(Integer seq);
+    public AdminInfoVO selectAdminBySeq(Integer seq);
+    public void updateAdmin(AdminInfoVO data);
 }

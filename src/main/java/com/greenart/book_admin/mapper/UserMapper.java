@@ -8,5 +8,9 @@ import com.greenart.book_admin.data.UserInfoVO;
 
 @Mapper
 public interface UserMapper {
-    public List<UserInfoVO> getUserList(Integer seq);
+    public List<UserInfoVO> getUserList(Integer offset, String keyword);
+    public Integer getUserCnt(String keyword);
+    public UserInfoVO getUserBySeq(Integer seq);
+    public void updateUser(UserInfoVO data);
+    public void deleteUser(Integer seq);
 }

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.greenart.book_admin.mapper.BookMapper">
+    <select id="getBookList" resultType="com.greenart.book_admin.data.BookInfoVO">
+        select a.*, b.ci_name, c.bimg_file_name as bi_img, d.si_summary
+        from book_info a 
+        left outer join category_info b
+        on a.bi_ci_seq = b.ci_seq
+        
+        left outer join
+        (
+        	select * from book_img where bimg_is_img = 1
+            group by bimg_bi_seq
+        ) c
+        on a.bi_seq = c.bimg_bi_seq
+        left outer join summary_info d
+        on a.bi_seq = d.si_bi_seq
+        where bi_name like '%${keyword}%'
+    </select>
+</mapper>

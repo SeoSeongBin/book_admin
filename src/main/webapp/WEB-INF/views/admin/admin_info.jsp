@@ -65,6 +65,36 @@
                     >${i}</a>
                 </c:if>
             </c:forEach>
+
+            <div class="modify_popup">
+                <div class="modify_box">
+                    <div class="add_admin_form">
+                        <div class="admin_id">
+                            <h3>아이디</h3>
+                            <input type="text" id="ai_id" placeholder="아이디 입력">
+                        </div>
+                        <div class="admin_pwd">
+                            <h3>비밀번호</h3>
+                            <input type="password" id="ai_pwd" placeholder="비밀번호입력">
+                        </div>
+                        <div class="admin_name">
+                            <h3>이름</h3>
+                            <input type="text" id="ai_name" placeholder="이름입력">
+                        </div>
+                        <div class="admin_file">
+                            <h3>프로필 사진</h3>
+                            <input type="file" id="ai_profile_file">
+                            <div class="profile_img"></div>
+                        </div>
+                    </div>
+                    <div class="btn_area">
+                        <button class="admin_modify">수정</button>
+                        <button class="cancel">취소</button>
+                    </div>
+                </div>
+            </div>
     </main>
+
+    
 </body>
 </html>

@@ -10,6 +10,8 @@ import org.springframework.dao.DuplicateKeyException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -76,7 +78,42 @@ public class AdminAPIController {
         admin_mapper.deleteAdmin(seq);
         m.put("status", true);
         m.put("message", "삭제되었습니다.");
-
+        
         return m;
+    }
+    @GetMapping("/info")
+    public AdminInfoVO getAdmin(@RequestParam Integer seq) {
+        return admin_mapper.selectAdminBySeq(seq);
+    }
+    
+    @PatchMapping("/modify")
+    public ResponseEntity<Map<String, Object>> patchAdminInfo(@RequestBody AdminInfoVO data) throws Exception {
+        Map<String, Object> m = new LinkedHashMap<String, Object>();
+
+        if(data.getAi_pwd() == null || data.getAi_pwd().equals("")) {
+            m.put("status", false);
+            m.put("message", "비밀번호를 입력하지 않았음.");
+            return new ResponseEntity<Map<String, Object>>(m,HttpStatus.BAD_REQUEST);
+        }
+        if(data.getAi_name() == null || data.getAi_name().equals("")) {
+            m.put("status", false);
+            m.put("message", "이름을 입력하지 않았음.");
+            return new ResponseEntity<Map<String, Object>>(m,HttpStatus.BAD_REQUEST);
+        }
+        // if(data.getAi_role() == null) {
+        //     m.put("status", false);
+        //     m.put("message", "계정 유형을 입력하지 않앗음.");
+        //     return new ResponseEntity<Map<String, Object>>(m,HttpStatus.BAD_REQUEST);
+        // }
+
+        String pwd = data.getAi_pwd();
+        pwd = AESAlgorithm.Encrypt(pwd);
+        data.setAi_pwd(pwd);
+
+        admin_mapper.updateAdmin(data);
+        m.put("status", true);
+        m.put("message", "계정 정보를 수정하였습니다.");
+        return new ResponseEntity<Map<String, Object>>(m,HttpStatus.OK);
+
     }
 }
