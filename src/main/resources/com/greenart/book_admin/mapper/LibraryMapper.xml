@@ -3,6 +3,32 @@
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.greenart.book_admin.mapper.LibraryMapper">
     <insert id="insertLibrary">
-
+        INSERT INTO library_info
+        (li_name)
+        VALUES(#{li_name});
     </insert>
+    <select id="getLibraryInfo" resultType="com.greenart.book_admin.data.LibraryInfoVO">
+        SELECT *
+        FROM library_info
+        where li_name like '%${keyword}%'
+        limit 8 offset #{offset}
+    </select>
+    <select id="getLibraryCount" resultType="java.lang.Integer">
+        select ceil(count(*)/8) from library_info
+    </select>
+
+    <select id="getLibraryInfoMod" resultType="com.greenart.book_admin.data.LibraryInfoVO">
+        SELECT li_seq, li_img_file, li_name
+        FROM library_info
+        where li_seq = #{seq}
+    </select>
+    <update id="updateLibrary">
+        UPDATE library_info
+        SET li_name=#{li_name}
+        WHERE li_seq=#{li_seq};
+    </update>
+    <delete id="deleteLibraryInfo">
+        delete from library_info
+        where li_seq = #{seq}
+    </delete>
 </mapper>

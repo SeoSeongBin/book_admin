@@ -11,9 +11,11 @@
         select *, (select count(*) from book_info where bi_ci_seq = ci_seq) as ci_count
         from
             category_info
+            where ci_name like '%${keyword}%'
             <if test="offset != null">
                 limit 10 offset #{offset}
             </if>
+            
     </select>
     <select id="getCatePageCount" resultType="java.lang.Integer">
         select ceil(count(*)/10) from category_info;

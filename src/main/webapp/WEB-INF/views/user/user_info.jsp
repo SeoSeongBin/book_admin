@@ -84,6 +84,11 @@
                 </c:if>
             </c:forEach>
 
+            <form class="search_area" action="/user/user_info">
+                <input type="text" name="keyword" placeholder="아이디검색" value="${keyword}">
+                <button type="submit">검색</button>
+            </form>
+
 
             <div class="mod_popup">
                 <div class="mod_popup_box">

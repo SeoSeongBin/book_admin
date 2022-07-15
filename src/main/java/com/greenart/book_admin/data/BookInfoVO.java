@@ -19,4 +19,5 @@ public class BookInfoVO {
     private String bi_img;
     private String ci_name;
     private String si_summary;
+    private String li_name;
 }

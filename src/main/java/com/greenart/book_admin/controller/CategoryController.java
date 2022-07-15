@@ -15,10 +15,11 @@ import com.greenart.book_admin.mapper.CategoryMapper;
 public class CategoryController {
     @Autowired CategoryMapper cate_mapper;
     @GetMapping("/category_info")
-    public String getCategoryInfo(Model model, @RequestParam @Nullable Integer page) {
+    public String getCategoryInfo(Model model, @RequestParam @Nullable Integer page, @RequestParam @Nullable String keyword) {
         if(page == null) page = 1;
         model.addAttribute("page", page);
-        model.addAttribute("list", cate_mapper.getCategoryList((page-1)*10));
+        model.addAttribute("keyword", keyword);
+        model.addAttribute("list", cate_mapper.getCategoryList((page-1)*10, keyword));
         model.addAttribute("pageCount", cate_mapper.getCatePageCount());
 
         return "/category/category_info";

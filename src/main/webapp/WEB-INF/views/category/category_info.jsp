@@ -36,6 +36,11 @@
             </c:forEach>
         </div>
 
+        <form class="search_area" action="/category/category_info">
+            <input type="text" name="keyword" placeholder="아이디검색" value="${keyword}">
+            <button type="submit">검색</button>
+        </form>
+
 
         <div class="cate_popup add">
             <div class="cate_popup_box">

@@ -10,7 +10,7 @@ import com.greenart.book_admin.data.CategoryInfoVO;
 @Mapper
 public interface CategoryMapper {
     public void insertCategory(String name) throws SQLException;
-    public List<CategoryInfoVO> getCategoryList(Integer offset);
+    public List<CategoryInfoVO> getCategoryList(Integer offset, String keyword);
     public Integer getCatePageCount();
     public CategoryInfoVO getCategoryBySeq(Integer seq);
     public void deletCategory(Integer seq);

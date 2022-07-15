@@ -9,13 +9,13 @@
         limit 10 offset #{offset}
     </select>
     <select id="getAdminAccount" resultType="java.lang.Integer">
-        select count(*) from admin_info;
+        select ceil(count(*)/10) from admin_info;
     </select>
 
     <insert id="insertAdmin">
         INSERT INTO admin_info
-        (ai_id, ai_pwd, ai_name)
-        VALUES(#{ai_id}, #{ai_pwd}, #{ai_name});
+        (ai_id, ai_pwd, ai_name, ai_profile_file)
+        VALUES(#{ai_id}, #{ai_pwd}, #{ai_name}, #{ai_profile_file});
     </insert>
 
     <select id="loginAdmin" resultType="com.greenart.book_admin.data.AdminInfoVO">

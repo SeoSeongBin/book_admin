@@ -3,7 +3,7 @@
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.greenart.book_admin.mapper.BookMapper">
     <select id="getBookList" resultType="com.greenart.book_admin.data.BookInfoVO">
-        select a.*, b.ci_name, c.bimg_file_name as bi_img, d.si_summary
+        select a.*, b.ci_name, c.bimg_file_name as bi_img, d.si_summary, e.li_name
         from book_info a 
         left outer join category_info b
         on a.bi_ci_seq = b.ci_seq
@@ -16,6 +16,22 @@
         on a.bi_seq = c.bimg_bi_seq
         left outer join summary_info d
         on a.bi_seq = d.si_bi_seq
+        left outer join library_info e
+        on a.bi_li_seq = e.li_seq
         where bi_name like '%${keyword}%'
     </select>
+    <insert id="insertBookInfo" parameterType="com.greenart.book_admin.data.BookInfoVO" useGeneratedKeys="true" keyProperty="bi_seq">
+        insert into book_info
+        (bi_ci_seq,bi_li_seq,bi_name,bi_author,bi_publisher,bi_publication_dt,bi_status)
+        values
+        (#{bi_ci_seq},#{bi_li_seq},#{bi_name},#{bi_author},#{bi_publisher},#{bi_publication_dt},#{bi_status})
+    </insert>
+    <insert id="insertBookImg">
+
+    </insert>
+    <insert id="insertSummary">
+        INSERT INTO summary_info
+        (si_bi_seq, si_order, si_summary)
+        VALUES(#{si_bi_seq}, #{si_order}, #{si_summary});
+    </insert>
 </mapper>

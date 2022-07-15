@@ -32,3 +32,43 @@
     height: 100px;
     word-wrap: break-word;
 }
+.book_popup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0,0,0,0.5);
+    display: none;
+}
+
+.book_popup_box {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    background-color: #fff;
+    padding: 30px;
+    width: 800px;
+    height: 700px;
+}
+
+.book_popup_box div {
+    margin-bottom: 20px;
+}
+
+.book_popup_box div:last-child {
+    margin: 0;
+}
+
+.book_popup_box p {
+    display: inline-block;
+    font-size: 24px;
+    width: 120px;
+    vertical-align: top;
+}
+
+.book_popup_box div.book_summary_area p {
+    display: block;
+    margin-bottom: 20px;
+}

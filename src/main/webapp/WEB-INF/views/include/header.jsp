@@ -63,7 +63,12 @@
     <header>
         <div class="admin_info">
             <div class="damin_profile">
-
+                <c:if test="${loginUser.ai_profile_file != null}">
+                    <img src="/img/admin/${loginUser.ai_profile_file}" alt="">
+                </c:if>
+                <c:if test="${loginUser.ai_profile_file == null}">
+                    <img src="/assets/img/admin/default.jpg" alt="">
+                </c:if>
             </div>
             <p>${loginUser.ai_name}(${loginUser.ai_id})</p>
             <a href="/admin/logout">로그아웃</a>
