@@ -26,6 +26,7 @@ public class BookController {
         model.addAttribute("list", book_mapper.getBookList((page-1)*10, keyword));
         model.addAttribute("cateList", cate_mapper.getCategoryList(null, keyword));
         model.addAttribute("liList", li_mapper.getLibraryInfo(keyword, (page-1)));
+        model.addAttribute("pageCnt", book_mapper.getBookInfo(keyword));
         return "/book/book_info";
     }
 }

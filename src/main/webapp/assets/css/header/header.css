@@ -21,6 +21,13 @@ header .admin_info .damin_profile {
     margin: 0 auto;
     margin-bottom: 10px;
     overflow: hidden;
+    position: relative;
+}
+
+header .admin_info .damin_profile img {
+    position: absolute;
+    top: 50%;left: 50%;
+    transform: translate(-50%,-50%);
 }
 
 nav {

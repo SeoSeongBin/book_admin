@@ -20,7 +20,7 @@
             <c:forEach items="${list}" var="item">
                 <div class="library_box">
                     <div class="library_img">
-                        <img src="${item.li_img_file}" alt="도서관이미지">
+                        <img src="/img/library/${item.li_img_file}" alt="도서관이미지">
                     </div>
                     <h3>${item.li_name}</h3>
                     <button class="modify" data-seq="${item.li_seq}" >수정</button>
@@ -58,13 +58,18 @@
 
                 <div class="library_img">
                     <p>도서관이미지</p>
-                    <input type="file" id="li_file_name">
+                    <form id="library_img_form">
+                        <input type="file" id="li_file_name" name="file" hidden accept="image/gif, image/jpeg, image/png">
+                    </form>
+
                     <div class="li_img_view">
                         
                     </div>
+                    <button id="add_image" onclick="document.getElementById('li_file_name').click()">이미지 선택</button>
                 </div>
 
                 <div class="btn_area">
+
                     <button id="add">추가</button>
                     <button id="modify_btn">수정</button>
                     <button class="cancel">취소</button>

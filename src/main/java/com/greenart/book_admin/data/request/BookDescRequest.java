@@ -6,4 +6,5 @@ import lombok.Data;
 public class BookDescRequest {
     private String type;
     private String content;
+    private Integer order;
 }

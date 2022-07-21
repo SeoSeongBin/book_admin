@@ -3,7 +3,7 @@
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.greenart.book_admin.mapper.BookMapper">
     <select id="getBookList" resultType="com.greenart.book_admin.data.BookInfoVO">
-        select a.*, b.ci_name, c.bimg_file_name as bi_img, d.si_summary, e.li_name
+        select a.*, b.ci_name, c.bimg_file_name, d.si_summary, e.li_name
         from book_info a 
         left outer join category_info b
         on a.bi_ci_seq = b.ci_seq
@@ -20,6 +20,9 @@
         on a.bi_li_seq = e.li_seq
         where bi_name like '%${keyword}%'
     </select>
+    <select id="getBookInfo" resultType="java.lang.Integer">
+        select ceil(count(*)/10) from admin_info;
+    </select>
     <insert id="insertBookInfo" parameterType="com.greenart.book_admin.data.BookInfoVO" useGeneratedKeys="true" keyProperty="bi_seq">
         insert into book_info
         (bi_ci_seq,bi_li_seq,bi_name,bi_author,bi_publisher,bi_publication_dt,bi_status)
@@ -27,11 +30,55 @@
         (#{bi_ci_seq},#{bi_li_seq},#{bi_name},#{bi_author},#{bi_publisher},#{bi_publication_dt},#{bi_status})
     </insert>
     <insert id="insertBookImg">
-
+        INSERT INTO book_img
+        (bimg_bi_seq, bimg_file_name, bimg_is_img)
+        VALUES(#{seq}, #{data.bimg_file_name}, 1);
     </insert>
     <insert id="insertSummary">
         INSERT INTO summary_info
         (si_bi_seq, si_order, si_summary)
-        VALUES(#{si_bi_seq}, #{si_order}, #{si_summary});
+        VALUES(#{seq}, 1, #{data.si_summary});
     </insert>
+    <delete id="deleteBookInfo">
+        delete from book_info where bi_seq = #{seq}
+    </delete>
+    <delete id="deleteBookImg">
+        delete from book_img where bimg_bi_seq = #{seq}
+    </delete>
+    <delete id="deleteBookSummary">
+        delete from summary_info where si_bi_seq = #{seq}
+    </delete>
+    <select id="selectBookMod" resultType="com.greenart.book_admin.data.BookInfoVO">
+        select a.*, b.ci_name, c.bimg_file_name, d.si_summary, e.li_name
+        from book_info a 
+        left outer join category_info b
+        on a.bi_ci_seq = b.ci_seq
+        
+        left outer join
+        (
+        	select * from book_img where bimg_is_img = 1
+            group by bimg_bi_seq
+        ) c
+        on a.bi_seq = c.bimg_bi_seq
+        left outer join summary_info d
+        on a.bi_seq = d.si_bi_seq
+        left outer join library_info e
+        on a.bi_li_seq = e.li_seq
+        where bi_seq = #{seq}
+    </select>
+    <update id="updateBookInfo">
+        UPDATE book_info
+        SET bi_ci_seq=#{bi_ci_seq}, bi_li_seq=#{bi_li_seq}, bi_name=#{bi_name}, bi_author=#{bi_author}, bi_publisher=#{bi_publisher}, bi_publication_dt=#{bi_publication_str}, bi_status=#{bi_status}
+        WHERE bi_seq=#{bi_seq};
+    </update>
+    <update id="updateBookImg">
+        UPDATE book_img
+        SET bimg_file_name=#{data.bimg_file_name}, bimg_is_img=1
+        WHERE bimg_bi_seq=#{seq};
+    </update>
+    <update id="updateBookSummary">
+        UPDATE summary_info
+        SET si_summary=#{data.si_summary}
+        WHERE si_bi_seq=#{seq};
+    </update>
 </mapper>

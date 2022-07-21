@@ -1,5 +1,5 @@
 
-let admin_img = new Array();
+let admin_img = "";
 
 $("document").ready(function(){
 
@@ -19,6 +19,7 @@ $("document").ready(function(){
                     alert(r.message);
                     return;
                 }
+                deleteProfileImg(admin_img);
                 let tag = 
                 '<img src="/img/admin/'+r.file+'" alt="프로필 사진">';
                 admin_img = r.file;
@@ -70,3 +71,13 @@ $("document").ready(function(){
         // admin_img = new Array();
     })
 })
+
+function deleteProfileImg(filename) {
+    $.ajax({
+        url:"/img/delete/admin/"+filename,
+        type:"delete",
+        success:function(r) {
+            console.log(r.message);
+        }
+    })
+}

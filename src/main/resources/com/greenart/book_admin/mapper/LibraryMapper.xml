@@ -4,8 +4,8 @@
 <mapper namespace="com.greenart.book_admin.mapper.LibraryMapper">
     <insert id="insertLibrary">
         INSERT INTO library_info
-        (li_name)
-        VALUES(#{li_name});
+        (li_name, li_img_file)
+        VALUES(#{li_name}, #{li_img_file});
     </insert>
     <select id="getLibraryInfo" resultType="com.greenart.book_admin.data.LibraryInfoVO">
         SELECT *
@@ -24,7 +24,7 @@
     </select>
     <update id="updateLibrary">
         UPDATE library_info
-        SET li_name=#{li_name}
+        SET li_name=#{li_name}, li_img_file=#{li_img_file}
         WHERE li_seq=#{li_seq};
     </update>
     <delete id="deleteLibraryInfo">

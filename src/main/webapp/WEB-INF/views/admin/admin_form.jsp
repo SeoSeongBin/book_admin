@@ -35,6 +35,7 @@
                     <input type="file" id="ai_profile_file" name="file" hidden accept="image/gif, image/jpeg, image/png">
                 </form>
                 <div class="profile_img">
+                    
                 </div>
                 <button id="add_image" onclick="document.getElementById('ai_profile_file').click()">이미지 선택</button>
             </div>

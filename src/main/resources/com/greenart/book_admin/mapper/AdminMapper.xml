@@ -30,14 +30,14 @@
     </delete>
 
     <select id="selectAdminBySeq" resultType="com.greenart.book_admin.data.AdminInfoVO">
-        select ai_seq, ai_id, ai_pwd, ai_name
+        select ai_seq, ai_id, ai_pwd, ai_name, ai_profile_file
         from admin_info
         where ai_seq=#{seq}
     </select>
 
     <update id="updateAdmin">
         UPDATE admin_info
-        SET ai_pwd=#{ai_pwd}, ai_name=#{ai_name}
+        SET ai_pwd=#{ai_pwd}, ai_name=#{ai_name}, ai_profile_file=#{ai_profile_file}
         WHERE ai_seq=#{ai_seq};
     </update>
 </mapper>

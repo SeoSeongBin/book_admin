@@ -20,7 +20,7 @@
             <c:forEach items="${list}" var="item">
                 <div class="book_box">
                     <div class="book_img">
-
+                        <img src="/img/book/${item.bimg_file_name}" alt="도서 사진">
                     </div>
                     <h3>${item.bi_name}</h3>
                     <p class="summary">
@@ -31,6 +31,24 @@
                 </div>
             </c:forEach>
         </div>
+
+        <c:forEach begin="1" end="${pageCnt}" var="i">
+            <c:if test="${country != null}">
+                <a href="/book/book_info?page=${i}&keyword=${keyword}&country=${country}"
+                    <c:if test="${page == i}">class="current"</c:if>
+                >${i}</a>
+            </c:if>
+            <c:if test="${country == null}">
+                <a href="/book/book_info?page=${i}&keyword=${keyword}"
+                <c:if test="${page == i}">class="current"</c:if>
+                >${i}</a>
+            </c:if>
+        </c:forEach>
+
+        <form class="search_area" action="/book/book_info">
+            <input type="text" name="keyword" placeholder="아이디검색" value="${keyword}">
+            <button type="submit">검색</button>
+        </form>
         
         <div class="book_popup">
             <div class="book_popup_box">
@@ -77,25 +95,29 @@
                     <select id="bi_status">
                             <option value="1">보유중</option>
                             <option value="2">입고예정</option>
-                            <option value="2">분실</option>
+                            <option value="3">분실</option>
                     </select>
                 </div>
 
                 <div class="book_summary_area">
                     <p>줄거리</p>
-                    <textarea id="si_summary" cols="30" rows="10"></textarea>
+
                 </div>
 
                 <div class="book_img_area">
                     <p>도서 이미지</p>
-                    <input type="file" id="bi_img">
+                    <form id="book_img_form">
+                        <input type="file" id="bi_img" name="file" hidden accept="image/gif, image/jpeg, image/png">
+                    </form>
                     <div class="bi_img_view">
 
                     </div>
+                    <button id="add_image" onclick="document.getElementById('bi_img').click()">이미지 선택</button>
                 </div>
 
                 <div class="btn_area">
                     <button id="add">등록</button>
+                    <button id="modify">수정</button>
                     <button class="cancel">취소</button>
                 </div>
             </div>

@@ -87,10 +87,14 @@
                             <input type="text" id="ai_name" placeholder="이름입력">
                         </div>
                         <div class="admin_file">
-                            <h3>프로필 사진</h3>
-                            <input type="file" id="ai_profile_file">
-                            <div class="profile_img"></div>
-                        </div>
+                <h3>프로필 사진</h3>
+                <form id="book_img_form">
+                    <input type="file" id="ai_profile_file" name="file" hidden accept="image/gif, image/jpeg, image/png">
+                </form>
+                <div class="profile_img">
+                </div>
+                <button id="add_image" onclick="document.getElementById('ai_profile_file').click()">이미지 선택</button>
+            </div>
                     </div>
                     <div class="btn_area">
                         <button class="admin_modify">수정</button>

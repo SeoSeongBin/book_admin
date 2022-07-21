@@ -19,6 +19,12 @@
     background-color: #333;
     border-radius: 50%;
     margin-bottom: 10px;
+    overflow: hidden;
+}
+
+.library_box .library_img img {
+    width: 100%;
+    height: 100%;
 }
 
 .library_box h3 {
@@ -26,3 +32,47 @@
     font-weight: 600;
     margin-bottom: 10px;
 }
+
+.popup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0,0,0,0.5);
+    display: none;
+}
+
+.popup .popup_box {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    background-color: #fff;
+    padding: 20px;
+    width: 300px;
+    
+}
+
+.popup .popup_box h2 {
+    font-size: 26px;
+    font-weight: 600;
+    margin-bottom: 20px;
+}
+
+.popup .popup_box div {
+    margin-bottom: 20px;
+}
+
+.popup .popup_box div p {
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+.popup .popup_box div #li_name {
+    border: none;
+    border-bottom: 1px solid #000;
+    
+}
+
+.popup .popup_box div #li_name:focus {outline:none;}
