@@ -181,8 +181,6 @@ $("document").ready(function(){
                 si_summary:$("#text").val()
             }
         }
-
-        console.log(data);
         $.ajax({
             url:"/api/book/update",
             type:"patch",

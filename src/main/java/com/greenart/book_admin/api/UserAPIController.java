@@ -31,7 +31,7 @@ public class UserAPIController {
     }
 
     @PatchMapping("/update")
-    public ResponseEntity<Map<String, Object>> patchUserInfo(@RequestBody UserInfoVO data) {
+    public ResponseEntity<Map<String, Object>> patchUserInfo(@RequestBody UserInfoVO data) throws Exception {
         Map<String, Object> m = new LinkedHashMap<String, Object>();
 
         if(data.getUi_pwd() == null || data.getUi_pwd().equals("")) {
@@ -44,6 +44,10 @@ public class UserAPIController {
             m.put("message", "이름을 입력하지 않았음.");
             return new ResponseEntity<Map<String, Object>>(m,HttpStatus.BAD_REQUEST);
         }
+
+        String pwd = data.getUi_pwd();
+        pwd = AESAlgorithm.Encrypt(pwd);
+        data.setUi_pwd(pwd);
 
         user_mapper.updateUser(data);
         m.put("status", true);

@@ -19,9 +19,10 @@
         left outer join library_info e
         on a.bi_li_seq = e.li_seq
         where bi_name like '%${keyword}%'
+        limit 10 offset #{offset} 
     </select>
     <select id="getBookInfo" resultType="java.lang.Integer">
-        select ceil(count(*)/10) from admin_info;
+        select ceil(count(*)/10) from book_info;
     </select>
     <insert id="insertBookInfo" parameterType="com.greenart.book_admin.data.BookInfoVO" useGeneratedKeys="true" keyProperty="bi_seq">
         insert into book_info

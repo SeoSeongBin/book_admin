@@ -22,4 +22,6 @@ public class BookInfoVO {
     private String ci_name;
     private String si_summary;
     private String li_name;
+
+    private Integer blk_status;
 }

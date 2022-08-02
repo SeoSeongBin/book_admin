@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.greenart.book_admin.mapper.CommentMapper">
+    <select id="selectListReport" resultType="com.greenart.book_admin.data.CommentReportVO">
+            SELECT a.*, b.cmi_summary, c.ui_id
+            from comment_report as a
+            left outer join comment_info as b
+            on a.cr_cmi_seq = b.cmi_seq
+            left outer join user_info as c
+            on a.cr_ui_seq = c.ui_seq
+            where b.cmi_summary like '%${keyword}%'
+            limit 10 offset #{offset}
+    </select>
+    <select id="selectListReportByseq" resultType="java.lang.Integer">
+        select ceil(count(*)/10) from comment_report;
+    </select>
+    <delete id="deleteReport">
+        DELETE FROM comment_report
+        WHERE cr_seq=#{seq}
+    </delete>
+    
+    <select id="selectReportInfo" resultType="com.greenart.book_admin.data.CommentReportVO">
+        select a.*, b.ui_status
+        from comment_report as a
+        left outer join user_info as b
+        on a.cr_ui_seq = b.ui_seq
+        where cr_ui_seq = #{seq}
+    </select>
+
+    <update id="updateUserStatus">
+        UPDATE user_info
+        SET ui_status=#{ui_status}
+        WHERE ui_seq=#{ui_seq};
+    </update>
+</mapper>

@@ -32,7 +32,7 @@
     <select id="selectAdminBySeq" resultType="com.greenart.book_admin.data.AdminInfoVO">
         select ai_seq, ai_id, ai_pwd, ai_name, ai_profile_file
         from admin_info
-        where ai_seq=#{seq}
+        where ai_seq=#{seq} 
     </select>
 
     <update id="updateAdmin">

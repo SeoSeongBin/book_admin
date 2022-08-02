@@ -46,7 +46,7 @@ public class AdminAPIController {
             return new ResponseEntity<Map<String, Object>>(m,HttpStatus.BAD_REQUEST);
         }
 
-        m.put("status", "true");
+        m.put("status", true);
         m.put("message", "관리자가 추가되었습니다");
         return new ResponseEntity<Map<String, Object>>(m,HttpStatus.OK);
     }
